@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class ConnectToDB {
+public class DBHandler {
     public static Connection connection() {
         Connection c = null;
         try {
@@ -11,9 +11,9 @@ public class ConnectToDB {
         }
         return c;
     }
-    public static void execute(String sql) {
+    public static void executeUpdate(String sql) {
         try {
-            Connection c = ConnectToDB.connection();
+            Connection c = connection();
             Statement statement = c.createStatement();
             statement.executeUpdate(sql);
             statement.close();
