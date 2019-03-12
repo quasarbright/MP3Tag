@@ -11,7 +11,7 @@ public class ConnectToDB {
         }
         return c;
     }
-    public static void  execute(String sql) {
+    public static void execute(String sql) {
         try {
             Connection c = ConnectToDB.connection();
             Statement statement = c.createStatement();
