@@ -1,3 +1,10 @@
+import org.farng.mp3.TagException;
+import org.farng.mp3.TagNotFoundException;
+import org.farng.mp3.id3.ID3v1;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.sql.*;
 
 public class DBHandler {
@@ -11,6 +18,7 @@ public class DBHandler {
         }
         return c;
     }
+
     public static void executeUpdate(String sql) {
         try {
             Connection c = connection();
@@ -21,5 +29,34 @@ public class DBHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void addSong(String path) {
+
+    }
+
+    public static void createDB() {
+        DBHandler.executeUpdate("create table song"+
+                "(id int primary key not null,"+
+                "name text unique not null," +
+                "path text unique not null)");
+        DBHandler.executeUpdate("create table tag"+
+                "(id int primary key not null," +
+                "name text unique not null)");
+        DBHandler.executeUpdate("create table playlist"+
+                "(id int primary key not null," +
+                "name text unique not null)");
+        DBHandler.executeUpdate("create table song_tag"+
+                "(id int primary key not null," +
+                "song_id int not null," +
+                "tag_id int not null)");
+        DBHandler.executeUpdate("create table included_playlist_tag"+
+                "(id int primary key not null," +
+                "playlist_id int not null," +
+                "tag_id int not null)");
+        DBHandler.executeUpdate(("create table excluded_playlist_tag" +
+                "(id int primary key not null," +
+                "playlist_id int not null," +
+                "tag_id int not null)"));
     }
 }
