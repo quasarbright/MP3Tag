@@ -1,10 +1,3 @@
-import org.farng.mp3.TagException;
-import org.farng.mp3.TagNotFoundException;
-import org.farng.mp3.id3.ID3v1;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.sql.*;
 
 public class DBHandler {

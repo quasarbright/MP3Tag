@@ -1,5 +1,3 @@
-import org.farng.mp3.TagException;
-
 import java.io.IOException;
 
 public class Main {
